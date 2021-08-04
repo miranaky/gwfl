@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -21,3 +22,15 @@ class User(AbstractUser):
     birth = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
     voucher = models.BooleanField(default=False)
     end_of_voucher = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
+
+    def in_voucher(self):
+        now = datetime.today().date()
+        try:
+            if now <= self.end_of_voucher:
+                return True
+            else:
+                return False
+        except TypeError:
+            return False
+
+    in_voucher.boolean = True

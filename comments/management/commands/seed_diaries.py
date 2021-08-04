@@ -1,26 +1,32 @@
 import random
-from datetime import datetime, timedelta
 from django.core.management.base import BaseCommand
 from django_seed import Seed
+from goodwords.models import GoodWord
 from users.models import User
+from diaries.models import Diary
 
 
 class Command(BaseCommand):
-    help = "Create users!"
+
+    help = "Create sample diaries!"
 
     def add_arguments(self, parser):
         parser.add_argument("--numbers", default=1, type=int)
 
     def handle(self, *args, **options):
+
         numbers = options.get("numbers")
         seeder = Seed.seeder()
+        users = User.objects.all()
+        goodwords = GoodWord.objects.all()
         seeder.add_entity(
-            User,
+            Diary,
             numbers,
             {
-                "avatar": f"user/profile_photos/P{random.randint(1,22)}.jpg",
-                "end_of_voucher": lambda x: datetime.today() + timedelta(days=random.randint(-30, 30)),
+                "author": lambda x: random.choice(users),
+                "goodwords": lambda x: random.choice(goodwords),
             },
         )
         seeder.execute()
-        self.stdout.write(self.style.SUCCESS(f"{numbers} User created!"))
+
+        self.stdout.write(self.style.SUCCESS(f"create {numbers} diaries!"))

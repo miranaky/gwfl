@@ -48,6 +48,7 @@ PROJECT_APPS = [
 ]
 THRIDPARTY_APPS = [
     "django_seed",
+    "rest_framework",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THRIDPARTY_APPS
@@ -142,3 +143,15 @@ AUTH_USER_MODEL = "users.User"
 MEDIA_ROOT = Path().joinpath(BASE_DIR, "uploads")
 
 MEDIA_URL = "/media/"
+
+
+# Django Rest Framework
+
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "config.authentications.JWTAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+}
