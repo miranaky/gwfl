@@ -8,4 +8,4 @@ class GoodWordsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GoodWord
-        fields = ("title", "goodwords", "speaker", "date")
+        fields = ("id", "title", "goodwords", "speaker", "date")

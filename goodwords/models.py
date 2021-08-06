@@ -24,7 +24,7 @@ class GoodWord(models.Model):
         verbose_name_plural = "Good Words"
 
     def __str__(self):
-        return f"{self.date}_{self.title}"
+        return f"{self.date} {self.title}"
 
     def count_diaries(self):
         return self.diaries.count()

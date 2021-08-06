@@ -1,11 +1,11 @@
 from rest_framework import serializers as sz
 from users.models import User
-from diaries.serializers import MyDiarySerializer, ReadDiarySerializer
+from diaries.serializers import MyDiaryListSerializer, ReadDiarySerializer
 
 
 class UserSerializer(sz.ModelSerializer):
     has_voucher = sz.BooleanField(source="in_voucher", read_only=True)
-    diaries = MyDiarySerializer(many=True, read_only=True)
+    diaries = MyDiaryListSerializer(many=True, read_only=True)
     password = sz.CharField(max_length=20, write_only=True)
 
     class Meta:
@@ -41,7 +41,7 @@ class UserSerializer(sz.ModelSerializer):
 
 
 class SmallUserSerializer(sz.ModelSerializer):
-    diaries = ReadDiarySerializer(many=True)
+    diaries = ReadDiarySerializer(many=True, read_only=True)
 
     class Meta:
         model = User

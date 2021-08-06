@@ -1,27 +1,35 @@
-# gwfl
-
-## Good Word for Life
+# Good Word for Life
 
 REST API of the Good Word for Life usisng Django REST Framework
 
-### API Actions
+## API usage explain and examples.
 
-#### User Section
+### User Section
 
-- [ ] Login/Logout
-- [ ] JWT Authentication
+- Create Account
+- Login
+- See Profile
+- Edit profile
+
+## API Todo List
+
+### User Section
+
+- [x] Login
+- [x] JWT Authentication
 - [x] Create Account
 - [x] See Profile
 - [x] Edit profile
 
-#### Good words Section
+### Good words Section
 
-- [ ] See Good Words
-- [ ] See Calendar
+- [x] See Good Words by monthly
+- [x] See Good Word detail.
 
-#### Diary Section
+### Diary Section
 
-- [ ] Write Diary
-- [ ] See Diary
-- [ ] Write Comment at Diary
-- [ ] See Comment at Diary
+- [x] See Diary
+- [x] Write Diary
+- [x] Delete Diary
+- [x] See Comment at Diary
+- [x] Write Comment at Diary

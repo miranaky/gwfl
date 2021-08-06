@@ -13,7 +13,7 @@ class DiariesAdmin(admin.ModelAdmin):
 
     """Diaries Admin Settings."""
 
-    list_display = ("author", "goodwords", "diary", "date", "count_comments")
+    list_display = ("author", "public", "goodwords", "diary", "date", "count_comments")
     list_filter = ("author",)
     inlines = (CommentInline,)
 

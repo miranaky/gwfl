@@ -13,18 +13,14 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         default_year = timezone.datetime.now().year
         default_month = timezone.datetime.now().month
-        parser.add_argument(
-            "--year", type=int, nargs="+", default=default_year, help="Set the year to create the good words."
-        )
-        parser.add_argument(
-            "--month", type=int, nargs="+", default=default_month, help="Set the month to create the good words."
-        )
+        parser.add_argument("--year", type=int, default=default_year, help="Set the year to create the good words.")
+        parser.add_argument("--month", type=int, default=default_month, help="Set the month to create the good words.")
 
     def create_calendar(self, year, month):
         """Create monthly calendar"""
         num_days = monthrange(year, month)[1]
         flag = True
-        for d in range(1, num_days):
+        for d in range(1, num_days + 1):
             date = f"{year}-{month}-{d}"
             try:
                 Calendar.objects.get(date=date)
@@ -42,7 +38,7 @@ class Command(BaseCommand):
         num_days = monthrange(year, month)[1]
         flag = True
         seeder = Seed.seeder()
-        for d in range(1, num_days):
+        for d in range(1, num_days + 1):
             date = f"{year}-{month}-{d}"
             date_obj = Calendar.objects.get(date=date)
             try:

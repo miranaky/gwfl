@@ -11,6 +11,8 @@ from users.serializers import UserSerializer, SmallUserSerializer
 
 
 class UserView(APIView):
+    """Create User view."""
+
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():

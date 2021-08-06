@@ -4,8 +4,8 @@ from users import views
 app_name = "users"
 
 urlpatterns = [
-    path("", views.UserView.as_view()),
-    path("login/", views.login_view),
-    path("me/", views.MeView.as_view()),
-    path("<int:pk>/", views.user_view),
+    path("", views.UserView.as_view()),  # user create.
+    path("login/", views.login_view),  # user login.
+    path("me/", views.MeView.as_view()),  # show/edit logined user profile.
+    path("<int:pk>/", views.user_view),  # show other users profile.
 ]
